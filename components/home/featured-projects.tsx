@@ -11,7 +11,7 @@ const projects = [
   {
     title: "E-Commerce Platform",
     description: "Modern e-commerce solution with advanced features",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/projects/ecommerce-platform.webp",
     tags: ["React", "Node.js", "MongoDB"],
   },
   {

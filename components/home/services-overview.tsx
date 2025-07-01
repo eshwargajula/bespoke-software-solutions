@@ -13,7 +13,7 @@ const healthcareServices = [
     description:
       "Complete operational solutions for healthcare facilities with patient management, scheduling, and billing integration.",
     features: ["Patient Records", "Appointment Scheduling", "Billing Integration", "Staff Management"],
-    href: "/services/website-design-development",
+    href: "/home/contact-section",
   },
   {
     icon: Shield,

@@ -7,13 +7,14 @@ import { ExternalLink, Eye } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import { Footer } from "@/components/footer"
 
 const projects = [
   {
     title: "E-Commerce Platform",
     description:
       "Modern e-commerce solution with advanced features including inventory management, payment processing, and analytics dashboard.",
-    image: "/images/projects/ecommerce-platform.jpg",
+    image: "/images/projects/ecommerce-platform.webp",
     tags: ["React", "Node.js", "MongoDB", "Stripe"],
     category: "Web Application",
     featured: true,
@@ -22,7 +23,7 @@ const projects = [
     title: "Healthcare Mobile App",
     description:
       "Comprehensive healthcare management app for patients and doctors with appointment scheduling and telemedicine features.",
-    image: "/images/projects/healthcare-app.jpg",
+    image: "/images/projects/healthcare-app.webp",
     tags: ["React Native", "Firebase", "Healthcare", "Real-time"],
     category: "Mobile App",
     featured: true,
@@ -31,7 +32,7 @@ const projects = [
     title: "Financial Dashboard",
     description:
       "Real-time financial data visualization platform with interactive charts and portfolio management tools.",
-    image: "/images/projects/financial-dashboard.jpg",
+    image: "/images/projects/financial-dashboard.webp",
     tags: ["Vue.js", "D3.js", "API", "Charts"],
     category: "Web Application",
     featured: false,
@@ -40,7 +41,7 @@ const projects = [
     title: "Restaurant Website",
     description:
       "Beautiful restaurant website with online ordering system, reservation management, and menu customization.",
-    image: "/images/projects/restaurant-website.jpg",
+    image: "/images/projects/restaurant-website.webp",
     tags: ["Next.js", "Tailwind", "Stripe", "CMS"],
     category: "Website",
     featured: false,
@@ -49,7 +50,7 @@ const projects = [
     title: "Fitness Tracking App",
     description:
       "Cross-platform fitness app with workout tracking, nutrition logging, and social features for motivation.",
-    image: "/images/projects/fitness-app.jpg",
+    image: "/images/projects/fitness-app.webp",
     tags: ["Flutter", "Firebase", "Health", "Social"],
     category: "Mobile App",
     featured: false,
@@ -57,7 +58,7 @@ const projects = [
   {
     title: "Corporate Website",
     description: "Professional corporate website with content management system, blog, and lead generation forms.",
-    image: "/images/projects/corporate-website.jpg",
+    image: "/images/projects/corporate-website.webp",
     tags: ["WordPress", "PHP", "SEO", "CMS"],
     category: "Website",
     featured: false,
@@ -66,7 +67,7 @@ const projects = [
     title: "Learning Management System",
     description:
       "Comprehensive LMS platform with course creation, student progress tracking, and interactive assessments.",
-    image: "/images/projects/learning-platform.jpg",
+    image: "/images/projects/learning-platform.webp",
     tags: ["React", "Express", "PostgreSQL", "Education"],
     category: "Web Application",
     featured: false,
@@ -74,7 +75,7 @@ const projects = [
   {
     title: "Real Estate Platform",
     description: "Property listing platform with advanced search, virtual tours, and agent management system.",
-    image: "/images/projects/real-estate.jpg",
+    image: "/images/projects/real-estate.webp",
     tags: ["Angular", "Node.js", "Maps API", "Real Estate"],
     category: "Web Application",
     featured: false,
@@ -86,6 +87,7 @@ export function PortfolioGrid() {
   const regularProjects = projects.filter((project) => !project.featured)
 
   return (
+    <>
     <section className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         {/* Featured Projects */}
@@ -107,12 +109,15 @@ export function PortfolioGrid() {
                 viewport={{ once: true }}
               >
                 <Card className="h-full hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-                  <div className="relative h-64">
+                  <div className="relative h-64 sm:h-72 lg:h-64">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       fill
-                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                      className="object-cover object-center"
+                      priority={index < 2}
+                      quality={90}
                     />
                     <div className="absolute top-4 left-4">
                       <Badge className="bg-orange-500 text-white">Featured</Badge>
@@ -172,12 +177,14 @@ export function PortfolioGrid() {
                 viewport={{ once: true }}
               >
                 <Card className="h-full hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-                  <div className="relative h-48">
+                  <div className="relative h-48 sm:h-56 lg:h-48 overflow-hidden">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       fill
-                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover object-center"
+                      quality={85}
                     />
                   </div>
                   <CardContent className="p-6">
@@ -185,7 +192,7 @@ export function PortfolioGrid() {
                       <Badge variant="outline">{project.category}</Badge>
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{project.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.slice(0, 3).map((tag) => (
                         <Badge key={tag} variant="secondary" className="text-xs">
@@ -217,5 +224,7 @@ export function PortfolioGrid() {
         </motion.div>
       </div>
     </section>
+    <Footer />
+    </>
   )
 }

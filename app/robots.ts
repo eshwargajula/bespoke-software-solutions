@@ -14,7 +14,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/private/"],
       },
     ],
-    sitemap: "https://bespokesoftware.com/sitemap.xml",
-    host: "https://bespokesoftware.com",
+    sitemap: "https://www.bespokesoftware.in/sitemap.xml",
+    host: "https://www.bespokesoftware.in",
   }
 }

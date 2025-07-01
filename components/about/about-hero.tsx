@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Hospital, Rocket, Users } from "lucide-react"
+import { ArrowRight, Building2, Rocket, Users } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
@@ -61,7 +61,7 @@ export function AboutHero() {
               className="grid grid-cols-2 gap-6"
             >
               <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-                <Hospital className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                <Building2 className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">50+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Healthcare Projects</div>
               </div>
@@ -114,7 +114,7 @@ export function AboutHero() {
               transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
               className="absolute top-10 right-10 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
             >
-              <Hospital className="w-8 h-8 text-blue-600" />
+              <Building2 className="w-8 h-8 text-blue-600" />
             </motion.div>
 
             <motion.div

@@ -1,5 +1,6 @@
 "use client"
-
+import { Navigation } from "@/components/navigation"
+import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -7,6 +8,7 @@ import { ArrowLeft, Github, Globe } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+
 
 // Mock project data - in a real app, this would come from a CMS or API
 const getProject = (slug: string) => {
@@ -35,17 +37,17 @@ const getProject = (slug: string) => {
         <p>The platform resulted in a 40% increase in online sales and improved customer satisfaction scores by 35%. The client was able to expand their product catalog by 200% without performance issues.</p>
       `,
       images: [
-        "/images/projects/ecommerce-platform.jpg",
-        "/images/projects/ecommerce-platform.jpg",
-        "/images/projects/ecommerce-platform.jpg",
-        "/images/projects/ecommerce-platform.jpg",
+        "/images/projects/ecommerce-platform.webp",
+        "/images/projects/ecommerce-platform.webp",
+        "/images/projects/ecommerce-platform.webp",
+        "/images/projects/ecommerce-platform.webp",
       ],
       tags: ["React", "Node.js", "MongoDB", "Stripe", "Redis"],
       category: "Web Application",
       client: "TechMart Inc.",
       duration: "4 months",
       year: "2023",
-      liveUrl: "https://example.com",
+      liveUrl: "",
       githubUrl: "https://github.com/example",
     },
     "healthcare-mobile-app": {
@@ -72,10 +74,10 @@ const getProject = (slug: string) => {
         <p>The app improved patient engagement by 60% and reduced no-show appointments by 45%. Healthcare providers reported 30% time savings in administrative tasks.</p>
       `,
       images: [
-        "/images/projects/healthcare-app.jpg",
-        "/images/projects/healthcare-app.jpg",
-        "/images/projects/healthcare-app.jpg",
-        "/images/projects/healthcare-app.jpg",
+        "/images/projects/healthcare-app.webp",
+        "/images/projects/healthcare-app.webp",
+        "/images/projects/healthcare-app.webp",
+        "/images/projects/healthcare-app.webp",
       ],
       tags: ["React Native", "Firebase", "Healthcare", "Real-time", "HIPAA"],
       category: "Mobile App",
@@ -94,21 +96,23 @@ const relatedProjects = [
   {
     title: "Financial Dashboard",
     slug: "financial-dashboard",
-    image: "/images/projects/financial-dashboard.jpg",
+    image: "/images/projects/financial-dashboard.webp",
     category: "Web Application",
   },
   {
     title: "Restaurant Website",
     slug: "restaurant-website",
-    image: "/images/projects/restaurant-website.jpg",
+    image: "/images/projects/restaurant-website.webp",
     category: "Website",
   },
 ]
 
 export function PortfolioDetail({ slug }: { slug: string }) {
   const project = getProject(slug)
-
+  
   return (
+    <>
+      <Navigation />
     <div className="pt-32 pb-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -178,7 +182,10 @@ export function PortfolioDetail({ slug }: { slug: string }) {
                   src={project.images[0] || "/placeholder.svg"}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-center"
+                  priority
+                  quality={90}
                 />
               </div>
             </div>
@@ -191,7 +198,9 @@ export function PortfolioDetail({ slug }: { slug: string }) {
                     src={image || "/placeholder.svg"}
                     alt={`${project.title} screenshot ${index + 2}`}
                     fill
-                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center"
+                    quality={85}
                   />
                 </div>
               ))}
@@ -214,7 +223,9 @@ export function PortfolioDetail({ slug }: { slug: string }) {
                           src={relatedProject.image || "/placeholder.svg"}
                           alt={relatedProject.title}
                           fill
-                          className="object-cover rounded-t-lg"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover object-center rounded-t-lg"
+                          quality={85}
                         />
                       </div>
                       <div className="p-4">
@@ -237,5 +248,7 @@ export function PortfolioDetail({ slug }: { slug: string }) {
         </motion.div>
       </div>
     </div>
+    <Footer />
+    </>
   )
 }

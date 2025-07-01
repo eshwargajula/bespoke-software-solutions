@@ -1,9 +1,12 @@
 "use client"
-
+import { Navigation } from "@/components/navigation"
 import { motion } from "framer-motion"
+import { Footer } from "@/components/footer"
 
 export function PortfolioHero() {
   return (
+    <>
+      <Navigation />
     <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
@@ -20,5 +23,7 @@ export function PortfolioHero() {
         </motion.div>
       </div>
     </section>
+    
+    </>
   )
 }

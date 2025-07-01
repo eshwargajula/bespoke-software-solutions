@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MessageCircle, Hospital, Rocket } from "lucide-react"
+import { MessageCircle, Building2, Rocket } from "lucide-react"
 
 export function ContactHero() {
   return (
@@ -54,7 +54,7 @@ export function ContactHero() {
             className="flex justify-center space-x-8 mb-8"
           >
             <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-              <Hospital className="w-5 h-5 text-blue-600" />
+              <Building2 className="w-5 h-5 text-blue-600" />
               <span>Healthcare Specialists</span>
             </div>
             <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">

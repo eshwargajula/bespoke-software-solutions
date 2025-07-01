@@ -1,230 +1,172 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Hospital, Rocket, Brain, Database, Globe } from "lucide-react"
-import { motion } from "framer-motion"
-
-const services = [
-  {
-    icon: Globe,
-    title: "Website Design & Development",
-    description: "Custom websites for hospitals and startups that drive engagement and conversions.",
-    features: ["Responsive Design", "SEO Optimized", "Fast Loading", "HIPAA Compliant"],
-    category: "Web Development",
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    icon: Database,
-    title: "Web Applications",
-    description: "Scalable web applications for hospital management and startup operations.",
-    features: ["Patient Management", "Real-time Data", "Cloud-Based", "API Integration"],
-    category: "Web Development",
-    color: "from-blue-600 to-blue-700",
-  },
-  {
-    icon: Brain,
-    title: "Machine Learning Models",
-    description: "AI-powered solutions for predictive healthcare analytics and startup insights.",
-    features: ["Predictive Analytics", "Data Processing", "Custom Algorithms", "Model Training"],
-    category: "AI/ML",
-    color: "from-purple-500 to-purple-600",
-  },
-]
-
-const industries = [
-  {
-    icon: Hospital,
-    title: "Healthcare Solutions",
-    description: "Specialized digital solutions for hospitals, clinics, and healthcare providers.",
-    solutions: [
-      "Electronic Health Records (EHR)",
-      "Patient Management Systems",
-      "Telemedicine Platforms",
-      "Medical Billing Software",
-      "Healthcare Analytics",
-      "HIPAA Compliance Tools",
-    ],
-    color: "from-green-500 to-green-600",
-  },
-  {
-    icon: Rocket,
-    title: "Startup Solutions",
-    description: "Technology solutions to launch, scale, and grow your startup business.",
-    solutions: [
-      "MVP Development",
-      "SaaS Platforms",
-      "E-commerce Solutions",
-      "Mobile Applications",
-      "Analytics Dashboards",
-      "Growth Tools",
-    ],
-    color: "from-orange-500 to-orange-600",
-  },
-]
+import { Code2, Smartphone, Globe, Database, Palette, Bot, ArrowRight, Sparkles } from "lucide-react"
 
 export function ServicesSection() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+  const services = [
+    {
+      icon: Globe,
+      title: "Web Development",
+      description:
+        "Custom websites and web applications built with modern technologies like React, Next.js, and Node.js",
+      features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Secure"],
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications for iOS and Android with seamless user experiences",
+      features: ["Native iOS/Android", "Cross-Platform", "App Store Ready", "Push Notifications"],
+      color: "from-purple-500 to-pink-500",
+    },
+    {
+      icon: Database,
+      title: "Enterprise Solutions",
+      description: "Scalable enterprise software solutions including CRM, ERP, and custom business applications",
+      features: ["Scalable Architecture", "System Integration", "Cloud Deployment", "24/7 Support"],
+      color: "from-green-500 to-emerald-500",
+    },
+    {
+      icon: Bot,
+      title: "AI & Machine Learning",
+      description: "Intelligent solutions powered by artificial intelligence and machine learning algorithms",
+      features: ["Predictive Analytics", "Natural Language Processing", "Computer Vision", "Automation"],
+      color: "from-orange-500 to-red-500",
+    },
+    {
+      icon: Palette,
+      title: "UI/UX Design",
+      description: "Beautiful, intuitive user interfaces and experiences that engage users and drive conversions",
+      features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+      color: "from-pink-500 to-rose-500",
+    },
+    {
+      icon: Code2,
+      title: "Custom Software",
+      description: "Tailored software solutions designed specifically for your unique business requirements",
+      features: ["Custom Development", "API Integration", "Third-party Services", "Maintenance"],
+      color: "from-indigo-500 to-purple-500",
+    },
+  ]
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
   }
 
   return (
-    <section id="services" className="py-16 lg:py-24 bg-slate-50 dark:bg-slate-900">
+    <section id="services" className="py-16 md:py-24 bg-white dark:bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            <span className="text-slate-900 dark:text-white">Our </span>
-            <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Services</span>
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
+            <Sparkles className="w-4 h-4 mr-2" />
+            Our Services
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+            Comprehensive
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              {" "}
+              Digital Solutions
+            </span>
           </h2>
-          <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            We specialize in three core areas: website design & development, web applications, and machine learning
-            models tailored for hospitals and startups.
+          <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            From concept to deployment, we provide end-to-end software development services that transform your ideas
+            into powerful digital experiences.
           </p>
         </motion.div>
 
-        {/* Core Services */}
+        {/* Services Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16 lg:mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              variants={itemVariants}
+              whileHover={{
+                y: -10,
+                transition: { duration: 0.3 },
+              }}
+              className="group"
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white dark:bg-slate-800 group hover:scale-105">
-                <CardHeader className="pb-4">
+              <Card className="h-full bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-600 hover:shadow-2xl transition-all duration-300 overflow-hidden relative">
+                {/* Gradient Overlay */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+                />
+
+                <CardHeader className="relative">
                   <div
-                    className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <service.icon className="w-6 h-6 text-white" />
+                    <service.icon className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-slate-900 dark:text-white">{service.title}</CardTitle>
-                  <CardDescription className="text-slate-600 dark:text-slate-300">
+                  <CardTitle className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className="text-slate-600 dark:text-slate-300 leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                        {feature}
-                      </li>
+
+                <CardContent className="relative">
+                  <div className="space-y-3 mb-6">
+                    {service.features.map((feature, featureIndex) => (
+                      <motion.div
+                        key={feature}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: featureIndex * 0.1 }}
+                        viewport={{ once: true }}
+                        className="flex items-center space-x-3"
+                      >
+                        <div className={`w-2 h-2 bg-gradient-to-r ${service.color} rounded-full`} />
+                        <span className="text-sm text-slate-600 dark:text-slate-300">{feature}</span>
+                      </motion.div>
                     ))}
-                  </ul>
+                  </div>
+
                   <Button
-                    onClick={() => scrollToSection("contact")}
-                    variant="outline"
-                    className="w-full border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
+                    variant="ghost"
+                    className="w-full group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition-all duration-300"
                   >
                     Learn More
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Button>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Industry Focus */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <div className="text-center mb-8 lg:mb-12">
-            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-4">Industries We Serve</h3>
-            <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              Specialized solutions designed specifically for healthcare organizations and startup companies.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {industries.map((industry, index) => (
-              <motion.div
-                key={industry.title}
-                initial={{ opacity: 0, x: index === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white dark:bg-slate-800">
-                  <CardHeader>
-                    <div
-                      className={`w-16 h-16 bg-gradient-to-r ${industry.color} rounded-xl flex items-center justify-center mb-4`}
-                    >
-                      <industry.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <CardTitle className="text-2xl text-slate-900 dark:text-white">{industry.title}</CardTitle>
-                    <CardDescription className="text-slate-600 dark:text-slate-300 text-base">
-                      {industry.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {industry.solutions.map((solution) => (
-                        <div key={solution} className="flex items-center text-sm text-slate-600 dark:text-slate-300">
-                          <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                          {solution}
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-12 lg:mt-16"
-        >
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 sm:p-12 text-white">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Transform Your Organization?</h3>
-            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-              Whether you're a hospital looking to improve patient care or a startup ready to scale, we have the
-              expertise to bring your vision to life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={() => scrollToSection("contact")}
-                size="lg"
-                variant="secondary"
-                className="px-8 py-3 bg-white text-blue-600 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Start Your Project
-              </Button>
-              <Button
-                onClick={() => scrollToSection("portfolio")}
-                size="lg"
-                variant="outline"
-                className="px-8 py-3 border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-300"
-              >
-                View Our Work
-              </Button>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

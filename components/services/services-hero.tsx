@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Hospital, Rocket, Shield, Zap } from "lucide-react"
+import { Building2, Rocket, Shield, Zap } from "lucide-react"
 
 export function ServicesHero() {
   return (
@@ -53,7 +53,7 @@ export function ServicesHero() {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
           >
             <div className="text-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-              <Hospital className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+              <Building2 className="w-8 h-8 text-blue-600 mx-auto mb-2" />
               <div className="text-sm font-medium text-gray-900 dark:text-white">Healthcare</div>
               <div className="text-xs text-gray-600 dark:text-gray-400">HIPAA Compliant</div>
             </div>
