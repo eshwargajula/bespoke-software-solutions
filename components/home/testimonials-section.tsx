@@ -9,17 +9,17 @@ export function TestimonialsSection() {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc.",
+      name: "Navin P",
+      role: "Director, Manipal Hospitals",
       image: "/images/testimonials/sarah-johnson.webp",
       content:
-        "Working with Bespoke Software Solutions was an absolute game-changer for our startup. They delivered a robust platform that exceeded our expectations and helped us scale rapidly.",
+        "Working with Bespoke Software Solutions was an absolute game-changer. They delivered a robust platform that exceeded our expectations and helped us scale rapidly.",
       rating: 5,
     },
     {
       id: 2,
-      name: "Michael Chen",
-      role: "CTO, Enterprise Corp",
+      name: "Veekshet B",
+      role: "Founder & CEO, DynoArk ",
       image: "/images/testimonials/michael-chen.webp",
       content:
         "The team's expertise in enterprise solutions is unmatched. They modernized our legacy systems and improved our operational efficiency by 40%. Highly recommended!",
@@ -27,8 +27,8 @@ export function TestimonialsSection() {
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
-      role: "Founder, Creative Agency",
+      name: "Subbu C",
+      role: "Director, Loginsoft",
       image: "/images/testimonials/emily-rodriguez.webp",
       content:
         "From concept to deployment, the entire process was seamless. The attention to detail and commitment to quality is what sets them apart from other development teams.",
@@ -36,11 +36,11 @@ export function TestimonialsSection() {
     },
     {
       id: 4,
-      name: "David Thompson",
-      role: "Product Manager, FinTech Solutions",
+      name: "Shanoli Ray",
+      role: "Director, Prolearnz",
       image: "/images/testimonials/david-thompson.webp",
       content:
-        "They built our mobile app with precision and delivered on time. The user experience is fantastic, and our customer engagement has increased significantly.",
+        "They built our Website with precision and delivered on time. The user experience is fantastic, and our customer engagement has increased significantly.",
       rating: 5,
     },
   ]
@@ -139,11 +139,11 @@ export function TestimonialsSection() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center">
             <div className="text-center">
-              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">200+</div>
+              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">50+</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">500+</div>
+              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">100+</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Projects Delivered</div>
             </div>
             <div className="text-center">

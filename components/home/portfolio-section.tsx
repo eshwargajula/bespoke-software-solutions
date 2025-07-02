@@ -7,7 +7,6 @@ import { ExternalLink, Github, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { link } from "fs"
 
 export function PortfolioSection() {
   const projects = [
@@ -17,7 +16,7 @@ export function PortfolioSection() {
       description:
         "All-in-one tech platform offering online courses, DIY kits, and ready-made projects to empower students and innovators.",
       image: "/images/projects/nationin.webp",
-      technologies: ["Wix Studio", "Wix velo", "Wix CMS" ],
+      technologies: ["Wix Studio", "Wix velo", "Wix CMS"],
       category: "Web Application",
       link: "https://www.nationin.com",
       github: "#",
@@ -48,9 +47,9 @@ export function PortfolioSection() {
       id: 4,
       title: "Hand Written Digit Recognition using Tranfer Learning",
       description:
-        "Finetuned LeNet-5 Architecture Model and it is optimized to work with greyscale images and can accurately identify single digits. The model is deployed using Flask Flamework, which allows for easy integration into web applications.",
+        "Finetuned LeNet-5 Architecture Model and it is optimized to work with greyscale images and can accurately identify single digits.",
       image: "/images/projects/HWDR.webp",
-      technologies: ["python", "TensorFlow", "Flask", "MNIST Dataset"],
+      technologies: ["Python", "TensorFlow", "Flask", "MNIST Dataset"],
       category: "AI/ML",
       link: "https://github.com/White-OG/Hand-Written-Digit-Recognition-Using-Transfer-Learning",
       github: "https://github.com/White-OG/Hand-Written-Digit-Recognition-Using-Transfer-Learning",
@@ -58,9 +57,10 @@ export function PortfolioSection() {
     {
       id: 5,
       title: "Regression Analysis for Car Price Prediction",
-      description: "It is clearly a regression problem and predictions are carried out on dataset of car sales in the american car market.",
+      description:
+        "It is clearly a regression problem and predictions are carried out on dataset of car sales in the american car market.",
       image: "/images/projects/car.jpg",
-      technologies: ["python", "Scikit-Learn", "Pandas", "ELK Stack"],
+      technologies: ["Python", "Scikit-Learn", "Pandas", "ELK Stack"],
       category: "AI/ML",
       link: "https://github.com/White-OG/Car-Price-Prediction",
       github: "https://github.com/White-OG/Car-Price-Prediction",
@@ -128,7 +128,8 @@ export function PortfolioSection() {
         >
           {projects.map((project, index) => (
             <motion.div key={project.id} variants={itemVariants}>
-              <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+              <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group 
+                bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <div className="relative h-48 sm:h-56 lg:h-48 overflow-hidden">
                   <Image
                     src={project.image || "/placeholder.svg"}
@@ -145,21 +146,31 @@ export function PortfolioSection() {
                       {project.category}
                     </Badge>
                   </div>
-                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex space-x-2">
-                      <Link href={project.link} target="_blank" rel="noopener noreferrer">
-                        <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white backdrop-blur-sm">
-                          <ExternalLink className="w-4 h-4 mr-1" />
-                            Live
-                        </Button>
-                      </Link>
-                      <Link href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white backdrop-blur-sm">
-                          <Github className="w-4 h-4 mr-1" />
-                            Code
-                        </Button>
-                      </Link>
-                    </div>
+
+                  {/* Live and Code buttons: Always visible on mobile, visible on hover for desktop */}
+                  <div className="absolute bottom-4 left-4 right-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex space-x-2">
+                    <Link href={project.link} target="_blank" rel="noopener noreferrer">
+                      <Button
+  size="sm"
+  variant="secondary"
+  className="bg-slate-200 hover:bg-slate-300 text-slate-900 border border-slate-300 
+             dark:bg-slate-800/90 dark:hover:bg-slate-800 dark:text-white backdrop-blur-sm"
+>
+  <ExternalLink className="w-4 h-4 mr-1" />
+  Live
+</Button>
+                    </Link>
+                    <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                      <Button
+  size="sm"
+  variant="secondary"
+  className="bg-slate-200 hover:bg-slate-300 text-slate-900 border border-slate-300 
+             dark:bg-slate-800/90 dark:hover:bg-slate-800 dark:text-white backdrop-blur-sm"
+>
+  <Github className="w-4 h-4 mr-1" />
+  Code
+</Button>
+                    </Link>
                   </div>
                 </div>
                 <CardContent className="p-4 sm:p-6">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, Code2, X } from "lucide-react"
@@ -11,6 +12,8 @@ import { motion } from "framer-motion"
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,12 +33,16 @@ export function Navigation() {
     { href: "#contact", label: "Contact" },
   ]
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+  const handleNavClick = (href: string) => {
     setIsOpen(false)
+    if (pathname === "/") {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    } else {
+      router.push(`/${href}`)
+    }
   }
 
   return (
@@ -71,7 +78,7 @@ export function Navigation() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => handleNavClick(item.href)}
                 className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200 relative group"
               >
                 {item.label}
@@ -89,7 +96,7 @@ export function Navigation() {
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <Button
-                onClick={() => scrollToSection("#contact")}
+                onClick={() => handleNavClick("#contact")}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-6 py-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 Get Started
@@ -103,12 +110,8 @@ export function Navigation() {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="relative">
-                  <Menu
-                    className={`w-6 h-6 transition-all duration-300 ${isOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"}`}
-                  />
-                  <X
-                    className={`w-6 h-6 absolute transition-all duration-300 ${isOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"}`}
-                  />
+                  <Menu className={`w-6 h-6 transition-all duration-300 ${isOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"}`} />
+                  <X className={`w-6 h-6 absolute transition-all duration-300 ${isOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"}`} />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white dark:bg-slate-900">
@@ -132,7 +135,7 @@ export function Navigation() {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.3, delay: index * 0.1 }}
-                          onClick={() => scrollToSection(item.href)}
+                          onClick={() => handleNavClick(item.href)}
                           className="w-full text-left text-lg font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 py-3 px-4 rounded-lg"
                         >
                           {item.label}
@@ -144,7 +147,7 @@ export function Navigation() {
                   {/* CTA Button */}
                   <div className="py-6 border-t border-slate-200 dark:border-slate-700">
                     <Button
-                      onClick={() => scrollToSection("#contact")}
+                      onClick={() => handleNavClick("#contact")}
                       className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       Get Started

@@ -18,8 +18,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    const fromEmail = process.env.CONTACT_FROM_EMAIL || "noreply@yourdomain.com"
-    const toEmail = process.env.CONTACT_TO_EMAIL || "hello@yourdomain.com"
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || "kilobytekubera@gmail.com"
+    const toEmail = process.env.CONTACT_TO_EMAIL || "eshwargajula31@gmail.com"
 
     // Send email to business
     await resend.emails.send({
@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
             <p style="color: #475569; line-height: 1.6; margin-bottom: 20px;">
               We typically respond within 24 hours during business days. Our team will analyze your project requirements and prepare a detailed proposal for you.
             </p>
-            
+          
             <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #667eea;">
               <h3 style="color: #1e293b; margin-bottom: 15px;">Your Inquiry Summary:</h3>
               <p style="color: #475569; margin: 5px 0;"><strong>Service Interest:</strong> ${service}</p>
@@ -140,7 +140,7 @@ export async function POST(request: NextRequest) {
           </div>
           
           <div style="text-align: center; margin-top: 30px; color: #64748b; font-size: 14px;">
-            <p>Visit our website: <a href="${process.env.NEXT_PUBLIC_APP_URL || "https://yourdomain.com"}" style="color: #667eea; text-decoration: none;">bespokesoftware.com</a></p>
+            <p>Visit our website: <a href="${process.env.NEXT_PUBLIC_APP_URL || "https://bespokesoftware.in"}" style="color: #667eea; text-decoration: none;">bespokesoftware.com</a></p>
             <p>Email: hello@bespokesoftware.com | Phone: +1 (555) 123-4567</p>
           </div>
         </div>

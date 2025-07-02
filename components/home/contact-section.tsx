@@ -74,7 +74,7 @@ export function ContactSection() {
     {
       icon: Mail,
       title: "Email Us",
-      content: "kilobytekubera@gmail.com",
+      content: "info@bespokesoftware.com",
       description: "Send us an email anytime",
     },
     {
@@ -86,7 +86,7 @@ export function ContactSection() {
     {
       icon: MapPin,
       title: "Visit Us",
-      content: "Warangal, Telangan, India, 506002",
+      content: "Warangal, Telangana, India, 506002",
       description: "Come say hello at our office",
     },
   ]

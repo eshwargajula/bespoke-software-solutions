@@ -7,9 +7,9 @@ import { motion } from "framer-motion"
 
 export function AboutSection() {
   const stats = [
-    { icon: Users, value: "200+", label: "Happy Clients", color: "text-blue-600" },
-    { icon: Award, value: "500+", label: "Projects Completed", color: "text-green-600" },
-    { icon: Clock, value: "5+", label: "Years Experience", color: "text-purple-600" },
+    { icon: Users, value: "50+", label: "Happy Clients", color: "text-blue-600" },
+    { icon: Award, value: "100+", label: "Projects Completed", color: "text-green-600" },
+    { icon: Clock, value: "1+", label: "Years Experience", color: "text-purple-600" },
     { icon: Target, value: "99%", label: "Success Rate", color: "text-orange-600" },
   ]
 
@@ -84,7 +84,7 @@ export function AboutSection() {
             {/* Key Points */}
             <div className="space-y-4 mb-8">
               {[
-                "Expert team with 5+ years of experience",
+                "Expert team with 1+ years of experience",
                 "Agile development methodology",
                 "Transparent communication throughout the project",
                 "24/7 support and maintenance",

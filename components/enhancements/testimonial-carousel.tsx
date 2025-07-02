@@ -10,7 +10,7 @@ import Image from "next/image"
 const testimonials = [
   {
     id: 1,
-    name: "Dr. Sarah Johnson",
+    name: "Yathin K",
     role: "Chief Medical Officer",
     company: "Metropolitan Hospital",
     image: "/images/testimonials/sarah-johnson.jpg",

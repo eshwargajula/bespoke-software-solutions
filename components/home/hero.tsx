@@ -28,10 +28,10 @@ export function Hero() {
   }, [])
 
   const stats = [
-    { icon: Code, label: "Projects Delivered", value: "500+" },
-    { icon: Users, label: "Happy Clients", value: "200+" },
+    { icon: Code, label: "Projects Delivered", value: "50+" },
+    { icon: Users, label: "Happy Clients", value: "100+" },
     { icon: Award, label: "Success Rate", value: "99%" },
-    { icon: Zap, label: "Years Experience", value: "8+" },
+    { icon: Zap, label: "Years Experience", value: "1+" },
   ]
 
   return (
@@ -79,14 +79,15 @@ export function Hero() {
             className="text-center lg:text-left"
           >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium mb-6 border border-blue-200 dark:border-blue-700"
-            >
-              <Zap className="w-4 h-4 mr-2" />
-              Transforming Ideas into Digital Reality
-            </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  className="mt-20 sm:mt-12 inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium mb-6 border border-blue-200 dark:border-blue-700"
+>
+  <Zap className="w-4 h-4 mr-2" />
+  Transforming Ideas into Digital Reality
+</motion.div>
+
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
