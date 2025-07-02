@@ -6,22 +6,20 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
+    const { name, email, phone, company, service, subject, message } = data;
 
-    const { name, email, phone, company, service, message } = data;
-
-    if (!name || !email || !service || !message) {
+    if (!name || !email || !service || !subject || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
     const fromEmail = process.env.CONTACT_FROM_EMAIL || "hello@bespokesoftware.in";
     const toEmail = process.env.CONTACT_TO_EMAIL || "eshwargajula31@gmail.com";
-    const subject = `New Inquiry: ${service}`;
 
     // Email to admin
     await resend.emails.send({
       from: fromEmail,
       to: toEmail,
-      subject,
+      subject: `New Inquiry: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
@@ -46,7 +44,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Your Message:</strong></p>
         <blockquote>${message.replace(/\n/g, "<br>")}</blockquote>
         <p>Regards,<br/>Bespoke Software Team</p>
-        <small>https://bespokesoftware.in</small>
+        <small><a href="https://bespokesoftware.in">bespokesoftware.in</a></small>
       `
     });
 
