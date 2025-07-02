@@ -3,7 +3,16 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Rocket, Heart, Building2, GraduationCap, ShoppingCart, Banknote, ArrowRight, CheckCircle } from "lucide-react"
+import {
+  Rocket,
+  Heart,
+  Building2,
+  GraduationCap,
+  ShoppingCart,
+  Banknote,
+  ArrowRight,
+  CheckCircle,
+} from "lucide-react"
 import Link from "next/link"
 
 const industries = [
@@ -64,7 +73,7 @@ const industries = [
 
 function IndustriesSection() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-slate-900">
+    <section id="industries" className="py-20 bg-gray-50 dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
