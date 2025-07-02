@@ -1,14 +1,24 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
@@ -20,8 +30,10 @@ export function ContactSection() {
     phone: "",
     company: "",
     service: "",
+    subject: "",
     message: "",
   })
+
   const { toast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,12 +41,14 @@ export function ContactSection() {
     setIsSubmitting(true)
 
     try {
+      const data = new FormData()
+      Object.entries(formData).forEach(([key, value]) => {
+        data.append(key, value)
+      })
+
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: data,
       })
 
       if (response.ok) {
@@ -43,12 +57,14 @@ export function ContactSection() {
           description: "We'll get back to you within 24 hours.",
           duration: 5000,
         })
+
         setFormData({
           name: "",
           email: "",
           phone: "",
           company: "",
           service: "",
+          subject: "",
           message: "",
         })
       } else {
@@ -141,14 +157,11 @@ export function ContactSection() {
                         value={formData.name}
                         onChange={(e) => handleInputChange("name", e.target.value)}
                         required
-                        className="h-12 bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+                        className="h-12 bg-white dark:bg-slate-700"
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                      >
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Email Address *
                       </label>
                       <Input
@@ -158,17 +171,14 @@ export function ContactSection() {
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         required
-                        className="h-12 bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+                        className="h-12 bg-white dark:bg-slate-700"
                       />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                      >
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Mobile Number
                       </label>
                       <Input
@@ -177,14 +187,11 @@ export function ContactSection() {
                         placeholder="+91 1234567890"
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
-                        className="h-12 bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+                        className="h-12 bg-white dark:bg-slate-700"
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="company"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                      >
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Company
                       </label>
                       <Input
@@ -193,16 +200,28 @@ export function ContactSection() {
                         placeholder="Your Company"
                         value={formData.company}
                         onChange={(e) => handleInputChange("company", e.target.value)}
-                        className="h-12 bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 transition-colors"
+                        className="h-12 bg-white dark:bg-slate-700"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="service"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                    >
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Subject *
+                    </label>
+                    <Input
+                      id="subject"
+                      type="text"
+                      placeholder="Project Subject"
+                      value={formData.subject}
+                      onChange={(e) => handleInputChange("subject", e.target.value)}
+                      required
+                      className="h-12 bg-white dark:bg-slate-700"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Service Needed *
                     </label>
                     <Select
@@ -210,10 +229,10 @@ export function ContactSection() {
                       onValueChange={(value) => handleInputChange("service", value)}
                       required
                     >
-                      <SelectTrigger className="h-12 bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400">
+                      <SelectTrigger className="h-12 bg-white dark:bg-slate-700">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
-                      <SelectContent className="bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600">
+                      <SelectContent className="bg-white dark:bg-slate-700">
                         <SelectItem value="website-design-development">Website Design & Development</SelectItem>
                         <SelectItem value="web-applications">Web Applications</SelectItem>
                         <SelectItem value="mobile-app-development">Mobile App Development</SelectItem>
@@ -235,27 +254,24 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                    >
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Project Details *
                     </label>
                     <Textarea
                       id="message"
-                      placeholder="Tell us about your project requirements, timeline, and any specific features you need..."
+                      placeholder="Tell us about your project..."
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
                       required
                       rows={5}
-                      className="bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 transition-colors resize-none"
+                      className="bg-white dark:bg-slate-700"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed dark:shadow-blue-500/25"
+                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:-translate-y-1 disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>
@@ -274,7 +290,7 @@ export function ContactSection() {
             </Card>
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Contact Info Section */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -298,12 +314,10 @@ export function ContactSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex items-start space-x-4 p-6 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-slate-700 dark:to-slate-600 rounded-xl border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-all duration-300"
+                  className="flex items-start space-x-4 p-6 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-slate-700 dark:to-slate-600 rounded-xl border border-gray-200 dark:border-gray-600"
                 >
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                      <info.icon className="w-6 h-6 text-white" />
-                    </div>
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <info.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{info.title}</h4>
