@@ -14,6 +14,8 @@ export async function POST(request: NextRequest) {
 
     const fromEmail = process.env.CONTACT_FROM_EMAIL || "hello@bespokesoftware.in";
     const toEmail = process.env.CONTACT_TO_EMAIL || "eshwargajula31@gmail.com";
+    console.log("Sending email to:", toEmail);
+    console.log("Sending confirmation to:", email);
 
     // Email to admin
     await resend.emails.send({
@@ -49,8 +51,8 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Contact form error:", error);
+  } catch (error:any) {
+    console.error("Contact form error:", error?.message || error);
     return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
   }
 }
