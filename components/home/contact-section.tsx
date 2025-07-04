@@ -90,13 +90,15 @@ export function ContactSection() {
     {
       icon: Mail,
       title: "Email Us",
-      content: "info@bespokesoftware.com",
+      content: "info@bespokesoftware.in",
+      href: "mailto:info@bespokesoftware.in",
       description: "Send us an email anytime",
     },
     {
       icon: Phone,
       title: "Call Us",
-      content: "+91 81869 83105",
+      content: "+91 86880 10856",
+      href: "tel:+918688010856",
       description: "Everyday from 9am to 6pm",
     },
     {
@@ -267,7 +269,6 @@ export function ContactSection() {
                       className="bg-white dark:bg-slate-700"
                     />
                   </div>
-
                   <Button
                     type="submit"
                     disabled={isSubmitting}
@@ -321,7 +322,18 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{info.title}</h4>
-                    <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">{info.content}</p>
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 dark:text-blue-400 font-medium mb-1 hover:underline block"
+                      >
+                        {info.content}
+                      </a>
+                    ) : (
+                      <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">{info.content}</p>
+                    )}
                     <p className="text-gray-600 dark:text-gray-300 text-sm">{info.description}</p>
                   </div>
                 </motion.div>

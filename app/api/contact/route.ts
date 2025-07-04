@@ -1,3 +1,5 @@
+// app/api/contact/route.ts
+
 import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -5,8 +7,15 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
-    const data = await request.json();
-    const { name, email, phone, company, service, subject, message } = data;
+    const form = await request.formData();
+
+    const name = form.get("name")?.toString() || "";
+    const email = form.get("email")?.toString() || "";
+    const phone = form.get("phone")?.toString() || "";
+    const company = form.get("company")?.toString() || "";
+    const service = form.get("service")?.toString() || "";
+    const subject = form.get("subject")?.toString() || "";
+    const message = form.get("message")?.toString() || "";
 
     if (!name || !email || !service || !subject || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -14,8 +23,6 @@ export async function POST(request: NextRequest) {
 
     const fromEmail = process.env.CONTACT_FROM_EMAIL || "hello@bespokesoftware.in";
     const toEmail = process.env.CONTACT_TO_EMAIL || "eshwargajula31@gmail.com";
-    console.log("Sending email to:", toEmail);
-    console.log("Sending confirmation to:", email);
 
     // Email to admin
     await resend.emails.send({
@@ -32,7 +39,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Message:</strong><br>${message.replace(/\n/g, "<br>")}</p>
         <hr/>
         <small>This message was sent from the contact form on bespokesoftware.in</small>
-      `
+      `,
     });
 
     // Confirmation to user
@@ -47,11 +54,11 @@ export async function POST(request: NextRequest) {
         <blockquote>${message.replace(/\n/g, "<br>")}</blockquote>
         <p>Regards,<br/>Bespoke Software Team</p>
         <small><a href="https://bespokesoftware.in">bespokesoftware.in</a></small>
-      `
+      `,
     });
 
     return NextResponse.json({ success: true });
-  } catch (error:any) {
+  } catch (error: any) {
     console.error("Contact form error:", error?.message || error);
     return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
   }
