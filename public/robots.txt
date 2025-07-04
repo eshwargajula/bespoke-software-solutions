@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.bespokesoftware.in
+
+# Sitemaps
+Sitemap: https://www.bespokesoftware.in/sitemap.xml

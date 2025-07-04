@@ -1,4 +1,4 @@
-import type { MetadataRoute } from "next"
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,15 +6,15 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/_next/", "/private/"],
+        disallow: ["/admin/", "/private/", "/_next/"], // internal and build files
       },
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/private/"],
+        disallow: ["/admin/", "/private/"], // more lenient for Googlebot
       },
     ],
     sitemap: "https://www.bespokesoftware.in/sitemap.xml",
     host: "https://www.bespokesoftware.in",
-  }
+  };
 }
