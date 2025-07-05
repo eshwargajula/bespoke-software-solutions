@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://bespokesoftware.in";
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.bespokesoftware.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -37,13 +37,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Bespoke Software Solutions - Custom Software Development",
-    description:
-      "Professional custom software development services. We build web applications, mobile apps, and enterprise solutions tailored to your business needs.",
-    images: ["/images/hero-bg.webp"],
-  },
+  // Removed Twitter metadata
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -64,8 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               description:
                 "We build custom web, mobile, and enterprise applications tailored to your needs.",
               sameAs: [
-                "https://linkedin.com/company/YOUR-HANDLE",
-                "https://twitter.com/YOUR-HANDLE",
+                "https://www.linkedin.com/company/bespokesoftwaresolutions/ ",
+                "https://www.instagram.com/bespoke.softwaresolutions/"
               ],
             }),
           }}
