@@ -28,8 +28,8 @@ export function Hero() {
   }, [])
 
   const stats = [
-    { icon: Code, label: "Projects Delivered", value: "70+" },
     { icon: Users, label: "Happy Clients", value: "50+" },
+    { icon: Code, label: "Projects Delivered", value: "70+" },
     { icon: Award, label: "Success Rate", value: "99%" },
     { icon: Zap, label: "Years Experience", value: "1+" },
   ]
