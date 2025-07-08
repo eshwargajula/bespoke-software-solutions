@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 export function AboutSection() {
   const stats = [
     { icon: Users, value: "50+", label: "Happy Clients", color: "text-blue-600" },
-    { icon: Award, value: "100+", label: "Projects Completed", color: "text-green-600" },
+    { icon: Award, value: "70+", label: "Projects Completed", color: "text-green-600" },
     { icon: Clock, value: "1+", label: "Years Experience", color: "text-purple-600" },
     { icon: Target, value: "99%", label: "Success Rate", color: "text-orange-600" },
   ]
