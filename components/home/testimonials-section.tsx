@@ -143,7 +143,7 @@ export function TestimonialsSection() {
               <div className="text-sm text-slate-600 dark:text-slate-400">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">100+</div>
+              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">70+</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Projects Delivered</div>
             </div>
             <div className="text-center">
